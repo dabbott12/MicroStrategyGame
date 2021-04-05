@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-            
+        UI.instance.UpdateUI();
     }
 
     public void EndTurn()
@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
 
         currentTurn++;
 
+        UI.instance.UpdateUI();
+
+        UI.instance.ToggleBuildingButtons(true);
 
     }
 
@@ -101,5 +104,6 @@ public class GameManager : MonoBehaviour
 
         placingBuilding = false;
 
+        UI.instance.UpdateUI();
     }
 }
