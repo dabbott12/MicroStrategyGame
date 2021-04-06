@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
         UI.instance.ToggleBuildingButtons(true);
 
+        Map.instance.EnableUsableTiles();
+
     }
 
     public void SetPlacingBuilding(BuildingType buildingType)

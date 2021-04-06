@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject highlight;
+    public bool hasBuilding;
+    public bool isEnabled;
+
+    private void Awake()
     {
-        
+        isEnabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ToggleHighlight(bool toggle)
     {
-        
+        highlight.SetActive(toggle);
+        this.isEnabled = toggle;
+    }
+
+    public bool canBeHighlighted(Vector3 potentialPosition)
+    {
+        return transform.position == potentialPosition && !hasBuilding;
+    }
+
+    private void OnMouseDown()
+    {
+        if(GameManager.instance.placingBuilding && !hasBuilding)
+        {
+            Map.instance.CreateNewBuilding(GameManager.instance.currentSelectedBuilding, transform.position);
+        }
     }
 }
